@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Слово</title>
+  <meta name="description" content="Тренажер ораторського мистецтва українською: голос, думка, поезія.">
+  <meta name="theme-color" content="#f2f2f7">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Слово">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="css/styles.css">
+  <script>
+    // Застосовуємо збережену тему до першого малювання, щоб не було спалаху.
+    try {
+      const theme = JSON.parse(localStorage.getItem('slovo:v1'))?.settings?.theme;
+      if (theme === 'light' || theme === 'dark') document.documentElement.dataset.theme = theme;
+    } catch {}
+  </script>
+  <script type="module" src="js/app.js"></script>
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <h1 class="topbar__title" id="page-title">Слово</h1>
+      <button class="icon-btn" id="theme-toggle" type="button" aria-label="Змінити тему"></button>
+    </header>
+    <main class="view" id="view" tabindex="-1">
+      <div class="boot">
+        <p>Завантаження…</p>
+        <p class="boot__hint">Якщо цей текст не зникає, застосунок відкрито як файл. Запустіть його через локальний сервер: інструкція в README.md.</p>
+      </div>
+    </main>
+  </div>
+  <nav class="tabbar" id="tabbar" aria-label="Розділи"></nav>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
